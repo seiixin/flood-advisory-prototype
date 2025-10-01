@@ -43,9 +43,6 @@
       <p class="note">This prototype displays static results from <code>app.js</code>. No live model.</p>
     </div>
 
-    <!-- Instruction banner -->
-    <div id="instruction" class="hidden">Map is zoomed out. <b>Tap a gate label</b> to see flood info — the map will zoom into that gate.</div>
-
     <!-- Map viewport -->
     <div id="mapViewport">
       <div id="mapOuter">
@@ -54,10 +51,32 @@
           <div id="markers"></div>
         </div>
       </div>
+
+      <!-- Quick Zoom chips -->
+      <div id="quickZoom" class="hidden">
+        <button class="qz" data-region="STOZ">ST/OZ Building</button>
+        <button class="qz" data-region="CSFRC">CS/FRC Building</button>
+        <button class="qz" data-region="SV">SV Building</button>
+      </div>
+
+      <!-- Zoom controls -->
       <div id="zoomCtrls">
         <button id="zoomIn">＋</button>
         <button id="zoomOut">－</button>
         <button id="zoomReset">Reset</button>
+      </div>
+    </div>
+
+    <!-- Tip modal -->
+    <div id="tipModal" class="hidden">
+      <div class="tip-card">
+        <h3>How to use the map</h3>
+        <ul>
+          <li>Click a <b>gate label</b> on the map to view flood info.</li>
+          <li>Or tap a <b>Building group</b> below to zoom to that area.</li>
+          <li>Drag to pan • Use mouse wheel / pinch to zoom.</li>
+        </ul>
+        <button class="tip-close" data-close-tip="true">Got it</button>
       </div>
     </div>
 

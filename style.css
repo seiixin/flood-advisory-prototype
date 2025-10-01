@@ -25,9 +25,6 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue'
 .note{color:#6b7280}
 .hidden{display:none}
 
-#instruction{position:absolute;left:50%;transform:translateX(-50%);top:8px;background:#111;color:#fff;padding:8px 12px;border-radius:8px;z-index:6;box-shadow:0 6px 20px rgba(0,0,0,.12)}
-#instruction b{font-weight:800}
-
 #mapViewport{position:absolute;inset:0;background:#fff}
 #mapOuter{position:absolute;left:0;top:0;will-change:transform;transform:translate(0,0)}
 #mapInner{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
@@ -42,21 +39,27 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue'
 #zoomCtrls{position:absolute;right:12px;bottom:12px;display:flex;flex-direction:column;gap:8px;z-index:4}
 #zoomCtrls button{background:#111;color:#fff;border:0;padding:10px 12px;border-radius:10px;font-weight:900;cursor:pointer}
 
-#modal{position:fixed;inset:0;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;z-index:999999}
+#quickZoom{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:flex;gap:10px;z-index:5;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.10)}
+#quickZoom .qz{background:#f3f4f6;border:2px solid #e5e7eb;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer}
+#quickZoom .qz:hover{background:#e5e7eb}
+#quickZoom.hidden{display:none}
+
+#tipModal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);z-index:99998}
+#tipModal.hidden{display:none !important;}
+.tip-card{width:min(520px,92%);background:#fff;color:#111;border-radius:14px;padding:18px;border:1px solid #e5e7eb;box-shadow:0 12px 30px rgba(0,0,0,.18)}
+.tip-card h3{margin:0 0 8px 0;font-weight:800}
+.tip-card ul{margin:8px 0 12px 18px;color:#333}
+.tip-card li{margin:6px 0}
+.tip-close{background:#111;color:#fff;border:0;padding:8px 14px;border-radius:8px;cursor:pointer;float:right}
+
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;z-index:99999}
+#modal.hidden{display:none !important}
+.modal-card{width:min(520px,92%);background:#fff;color:#111;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;border:1px solid #e5e7eb;box-shadow:0 12px 30px rgba(0,0,0,.18);position:relative}
+.modal-header{background:#fff;border-radius:10px 10px 0 0;padding:2px 2px 6px 2px}
 .modal-card h3{margin:0;font-weight:800}
-.modal-card .label{font-size:13px;color:#666}
+.modal-card .label{font-size:13px;color:#666;margin-top:2px}
 .modal-card .level{font-size:22px;font-weight:800;margin-top:2px}
 .modal-card .level-img{width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;background:#fff}
-.modal-card button{align-self:flex-end;background:#111;color:#fff;border:0;padding:8px 14px;border-radius:8px;cursor:pointer}
-
-#modal, #modal * { pointer-events:auto; }
-
-.modal-card{position:relative}
-.modal-x{position:absolute;top:10px;right:10px;background:#111;color:#fff;border:0;border-radius:8px;padding:6px 10px;cursor:pointer}
 .modal-actions{display:flex;justify-content:flex-end}
-
-#modal.hidden{display:none !important;}
-
-.modal-card{background:#fff}
-.modal-header{background:#fff;border-radius:10px 10px 0 0;padding:2px 2px 6px 2px}
-.modal-card .label{margin-top:2px}
+.modal-card button{background:#111;color:#fff;border:0;padding:8px 14px;border-radius:8px;cursor:pointer}
+.modal-x{position:absolute;top:10px;right:10px;background:#111;color:#fff;border:0;border-radius:8px;padding:6px 10px;cursor:pointer}
