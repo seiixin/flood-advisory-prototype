@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Adamson Flood Advisory Demo (Web)</title>
+  <title>Adamson Flood Advisory — Web</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="splash">
     <img src="assets/seal.png" alt="Seal" class="splash-logo" />
     <h1>Adamson University</h1>
-    <p>Flood Advisory Demo</p>
+    <p>Flood Advisory Demo • Web</p>
   </div>
 
   <header id="topbar">
@@ -20,13 +20,12 @@
     <div class="center">
       <strong id="advisoryLabel">Advisory: —</strong>
     </div>
-    <div class="right">
-      <button id="btnLegend" title="Legend">Legend ▸</button>
-    </div>
+    <div class="right"></div>
+    <div id="colorBar"></div>
   </header>
 
   <main id="app">
-    <!-- Advisory selection overlay -->
+    <!-- Advisory selection -->
     <div id="advisoryScreen" class="screen">
       <div class="brand">
         <img src="assets/seal.png" alt="Seal" />
@@ -41,7 +40,11 @@
         <button class="card" data-adv="Orange"><span class="dot" style="background:#FF9800"></span>Orange</button>
         <button class="card" data-adv="Red"><span class="dot" style="background:#F44336"></span>Red</button>
       </div>
+      <p class="note">This prototype displays static results from <code>app.js</code>. No live model.</p>
     </div>
+
+    <!-- Instruction banner -->
+    <div id="instruction" class="hidden">Map is zoomed out. <b>Tap a gate label</b> to see flood info — the map will zoom into that gate.</div>
 
     <!-- Map viewport -->
     <div id="mapViewport">
@@ -58,62 +61,19 @@
       </div>
     </div>
 
-    <!-- Sidebar legend -->
-    <aside id="sidebar">
-      <img src="assets/legend_header.png" alt="Legend Header" class="legend-header" />
-      <div class="legend-scroll">
-        <h3>St. Vincent (SV) Site</h3>
-        <ol>
-          <li>SV Building</li>
-          <li>SV Covered Court</li>
-          <li>Adamson University Gymnasium</li>
-          <li>SV Hall</li>
-          <li>Jubilee Statue</li>
-          <li>SV Vehicle &amp; Pedestrian Entrance/Exit</li>
-          <li>SV Canteen</li>
-          <li>St. Vincent de Paul Church</li>
-          <li>Marian Center</li>
-          <li>SVP Church Gate</li>
-        </ol>
-
-        <h3>St. Theresa (ST) / Ozanam (OZ) Sites</h3>
-        <ol>
-          <li>ST Building</li>
-          <li>ST Pedestrian Entrance/Exit</li>
-          <li>ST Service Gate</li>
-          <li>Adamson University Theater / Art Gallery</li>
-          <li>OZ Canteen</li>
-          <li>Fr. Leandro Montanana (LM) Building</li>
-          <li>OZ Building</li>
-          <li>Chemical Engineering &amp; ECE Laboratories</li>
-          <li>Chemistry Laboratory</li>
-          <li>OZ Vehicle &amp; Pedestrian Entrance/Exit</li>
-          <li>OZ Service Gate</li>
-        </ol>
-
-        <h3>Cardinal Santos (CS) / BED Sites</h3>
-        <ol>
-          <li>CS Building</li>
-          <li>CS Vehicle &amp; Pedestrian Entrance/Exit</li>
-          <li>CS Annex Service Gate</li>
-          <li>CS Building Annex 2</li>
-          <li>Garden Cafe / Falcon Radio Station</li>
-          <li>CS Building Annex 1</li>
-          <li>St. John Perboyre (JP) Building</li>
-          <li>BED Vehicle &amp; Pedestrian Entrance/Exit</li>
-          <li>Francis Regis Clet (FRC) Building</li>
-          <li>Computer Laboratory</li>
-        </ol>
-      </div>
-    </aside>
-
     <!-- Modal -->
     <div id="modal" class="hidden">
       <div class="modal-card">
-        <h3 id="modalTitle">Gate</h3>
-        <div class="label">Expected Flood Level</div>
-        <div id="modalLevel" class="level">—</div>
-        <button id="closeModal">Close</button>
+        <button class="modal-x" aria-label="Close" data-close="true">✕</button>
+        <div class="modal-header">
+          <h3 id="modalTitle">Gate</h3>
+          <div class="label">Expected Flood Level</div>
+          <div id="modalLevel" class="level">—</div>
+        </div>
+        <img id="levelImg" class="level-img" alt="Level Visual" src="assets/knee.svg"/>
+        <div class="modal-actions">
+          <button id="closeModal" data-close="true" type="button">Close</button>
+        </div>
       </div>
     </div>
   </main>
