@@ -39,6 +39,14 @@ const LEVELS = {
   Red:    { 'SV-6':'Half-tire','SV-10':'Half-tire','ST-2':'Half-tire','ST-10':'Half-tire','CS-2':'Half-tire','CS-3':'Half-tire','CS-8':'Half-tire' },
 };
 
+
+function shortLabelFromId(id){
+  // Convert 'SV-10' -> 'SV - 10'
+  const parts = id.split('-');
+  if(parts.length===2) return parts[0] + ' - ' + parts[1];
+  return id.replace('-', ' - ');
+}
+
 // Elements
 const colorBar = document.getElementById('colorBar');
 const advisoryScreen = document.getElementById('advisoryScreen');
@@ -137,7 +145,7 @@ function drawMarkers(){
     el.style.top  = (p.y * app.base.h) + 'px';
     const level = (LEVELS[app.advisory] || {})[p.id] || '—';
     el.dataset.level = level;
-    el.textContent = p.display;
+    el.textContent = shortLabelFromId(p.id);
     el.addEventListener('click', () => focusGate(p, level));
     markers.appendChild(el);
   });
